@@ -3,20 +3,20 @@ function check_api_key(apikey) {
     try {
         if(!apikey) return {
             error: 1,
-            msg: 'thiếu api key'
+            msg: 'আমি বুঝতে পারছি না'
         }
         const data_apikey = require(global.APIKEY);
         if (!data_apikey.find(i => i.apikey == apikey)) {
             return {
                 error: 1,
-                msg: 'APIKEY KHÔNG CHÍNH XÁC!'
+                msg: 'APIKEY ভুল'
             }
         } else {
             let APIKEY = data_apikey.find(i => i.apikey == apikey);
             if (APIKEY.request == 0) {
                 return {
                     error: 1,
-                    msg: 'APIKEY của bạn đã hết lượt request'
+                    msg: 'আপনার APIKEY মেয়াদ শেষ হয়ে গেছে'
                 }
             } 
             else {
@@ -37,7 +37,7 @@ function check_api_key(apikey) {
     } catch (e) {
         return {
             error: 1,
-            msg: 'Đã xảy ra lỗi với API KEY của bạn!'
+            msg: 'আপনার API KEY এর সাথে কিছু ভুল হয়েছে!'
         }
     }
 }
@@ -45,4 +45,3 @@ function check_api_key(apikey) {
 module.exports = {
     check_api_key
 };
-
